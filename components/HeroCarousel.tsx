@@ -16,19 +16,19 @@ const slides: CarouselSlide[] = [
     id: 1,
     title: 'Laptop/Desktop/Office equipment',
     description: 'Professional installation and setup services',
-    image: '/carusel_laptops_1.png',
+    image: '/flexusnet/carusel_laptops_1.png',
   },
   {
     id: 2,
     title: 'Network Installations',
     description: 'Complete network infrastructure setup',
-    image: '/carusel_networks_1.png',
+    image: '/flexusnet/carusel_networks_1.png',
   },
   {
     id: 3,
     title: 'POS Systems',
     description: 'Point of sale installation and configuration',
-    image: '/carusel_pos_1.png',
+    image: '/flexusnet/carusel_pos_1.png',
   },
 ]
 
