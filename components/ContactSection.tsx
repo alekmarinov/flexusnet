@@ -8,7 +8,7 @@ export default function ContactSection() {
             Get In Touch
           </h2>
           <p className="text-lg text-gray-700">
-            We're here to help with all your IT service needs
+            We&apos;re here to help with all your IT service needs
           </p>
         </div>
 

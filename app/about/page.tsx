@@ -28,7 +28,7 @@ export default function AboutPage() {
                 top-quality IT support and technology solutions.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
-                We're committed to making IT services accessible, reliable, and affordable for 
+                We&apos;re committed to making IT services accessible, reliable, and affordable for 
                 businesses nationwide, ensuring that technology empowers growth rather than 
                 hindering it.
               </p>
@@ -42,7 +42,7 @@ export default function AboutPage() {
                 qualified technicians who are committed to delivering excellence.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Through innovation, dedication, and a customer-first approach, we're building the 
+                Through innovation, dedication, and a customer-first approach, we&apos;re building the 
                 most trusted marketplace for IT services in the United States, setting new standards 
                 for quality, reliability, and customer satisfaction.
               </p>
@@ -60,7 +60,7 @@ export default function AboutPage() {
               Why Choose Flexus Net?
             </h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              We're not just another IT service provider. Here's what makes us different:
+              We&apos;re not just another IT service provider. Here&apos;s what makes us different:
             </p>
           </div>
 
@@ -101,8 +101,8 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold text-neon-cyan mb-4">Quality Guarantee</h3>
               <p className="text-gray-700">
-                We stand behind every job. Our satisfaction guarantee ensures that if you're 
-                not happy with the service, we'll make it right. Your success is our success.
+                We stand behind every job. Our satisfaction guarantee ensures that if you&apos;re 
+                not happy with the service, we&apos;ll make it right. Your success is our success.
               </p>
             </div>
 
@@ -127,7 +127,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold text-neon-cyan mb-4">Competitive Pricing</h3>
               <p className="text-gray-700">
-                We believe quality IT services shouldn't break the bank. Our transparent 
+                We believe quality IT services shouldn&apos;t break the bank. Our transparent 
                 pricing ensures you get fair rates without hidden fees or surprises.
               </p>
             </div>
@@ -165,7 +165,7 @@ export default function AboutPage() {
               <div className="bg-white backdrop-blur-sm p-6 rounded-lg border border-neon-cyan/20 group-hover:border-neon-cyan/40 transition-all duration-300 flex-1">
                 <h3 className="text-xl font-semibold text-neon-cyan mb-2">Customer First</h3>
                 <p className="text-gray-700">
-                  Every decision we make is guided by what's best for our customers. 
+                  Every decision we make is guided by what&apos;s best for our customers. 
                   Their success is our top priority.
                 </p>
               </div>
@@ -186,7 +186,7 @@ export default function AboutPage() {
               <div className="bg-white backdrop-blur-sm p-6 rounded-lg border border-neon-cyan/20 group-hover:border-neon-cyan/40 transition-all duration-300 flex-1">
                 <h3 className="text-xl font-semibold text-neon-cyan mb-2">Excellence</h3>
                 <p className="text-gray-700">
-                  We're committed to delivering exceptional service quality and continuously 
+                  We&apos;re committed to delivering exceptional service quality and continuously 
                   improving our platform and processes.
                 </p>
               </div>

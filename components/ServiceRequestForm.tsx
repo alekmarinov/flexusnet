@@ -163,7 +163,7 @@ export default function ServiceRequestForm() {
             Request Service
           </h2>
           <p className="text-lg text-gray-700">
-            Fill out the form below and we'll get back to you
+            Fill out the form below and we&apos;ll get back to you
           </p>
         </div>
 
@@ -333,7 +333,7 @@ export default function ServiceRequestForm() {
           {submitStatus === 'success' && (
             <div className="mt-6 p-4 bg-green-900/50 border border-green-400 rounded-lg">
               <p className="text-green-300">
-                Thank you! Your request has been submitted successfully. We'll contact you soon.
+                Thank you! Your request has been submitted successfully. We&apos;ll contact you soon.
               </p>
             </div>
           )}
