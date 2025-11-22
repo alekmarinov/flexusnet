@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getAssetPath } from '@/lib/paths'
 
 interface CarouselSlide {
   id: number
@@ -16,19 +17,19 @@ const slides: CarouselSlide[] = [
     id: 1,
     title: 'Laptop/Desktop/Office equipment',
     description: 'Professional installation and setup services',
-    image: '/flexusnet/carusel_laptops_1.png',
+    image: '/carusel_laptops_1.png',
   },
   {
     id: 2,
     title: 'Network Installations',
     description: 'Complete network infrastructure setup',
-    image: '/flexusnet/carusel_networks_1.png',
+    image: '/carusel_networks_1.png',
   },
   {
     id: 3,
     title: 'POS Systems',
     description: 'Point of sale installation and configuration',
-    image: '/flexusnet/carusel_pos_1.png',
+    image: '/carusel_pos_1.png',
   },
 ]
 
@@ -75,7 +76,7 @@ export default function HeroCarousel() {
           >
             <div className="relative h-full w-full">
               <Image
-                src={slide.image}
+                src={getAssetPath(slide.image)}
                 alt={slide.title}
                 fill
                 className="object-cover"

@@ -1,5 +1,6 @@
 import recommendationsData from '@/recomendations.json'
 import Image from 'next/image'
+import { getAssetPath } from '@/lib/paths'
 
 interface Recommendation {
   name: string
@@ -29,7 +30,7 @@ export default function Recommendations() {
               <div className="flex items-start mb-6">
                 <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-neon-cyan/50">
                   <Image
-                    src={`/flexusnet/${rec.photo}`}
+                    src={getAssetPath(`/${rec.photo}`)}
                     alt={rec.name}
                     fill
                     className="object-cover"
