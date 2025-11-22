@@ -37,7 +37,7 @@ const config: Config = {
           900: '#701a75',
         },
         neon: {
-          cyan: '#5B21B6',
+          cyan: '#0088aa',
         },
         cyber: {
           light: '#fafaff',

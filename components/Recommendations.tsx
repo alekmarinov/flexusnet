@@ -28,10 +28,12 @@ export default function Recommendations() {
             >
               <div className="flex items-start mb-6">
                 <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-neon-cyan/50">
-                  {/* Placeholder for image - in production, use the actual image */}
-                  <div className="w-full h-full bg-gradient-to-br from-neon-cyan/30 to-neon-magenta/30 flex items-center justify-center text-neon-cyan font-bold text-xl">
-                    {rec.name.charAt(0)}
-                  </div>
+                  <Image
+                    src={`/${rec.photo}`}
+                    alt={rec.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <div className="ml-4">
                   <h3 className="text-xl font-semibold text-neon-cyan">{rec.name}</h3>
