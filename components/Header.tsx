@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -13,9 +14,16 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center group">
-              <span className="font-orbitron text-2xl md:text-3xl font-bold text-neon-cyan tracking-wider group-hover:text-neon-cyan/80 transition-all duration-300">
-                FlexusNet
-              </span>
+              <div className="relative flex items-center h-12 md:h-16">
+                <Image
+                  src="/flexus-logo.jpg"
+                  alt="FlexusNet Logo"
+                  width={200}
+                  height={80}
+                  className="h-full w-auto object-contain transition-opacity duration-300 group-hover:opacity-90 logo-image"
+                  priority
+                />
+              </div>
             </Link>
           </div>
 

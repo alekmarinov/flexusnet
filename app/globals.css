@@ -307,3 +307,72 @@ body::before {
   background: #0099bb;
 }
 
+/* Animated logo styling for header */
+.logo-video {
+  outline: none !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+  appearance: none;
+  /* Remove any default video styling */
+  padding: 0;
+  margin: 0;
+  /* Blend mode to make black transparent on white background */
+  mix-blend-mode: screen;
+  /* Alternative: use multiply for white backgrounds to become transparent */
+  /* mix-blend-mode: multiply; */
+  /* Filter to enhance visibility and remove black backgrounds */
+  filter: brightness(1.1) contrast(1.2);
+}
+
+.logo-video::-webkit-media-controls {
+  display: none !important;
+}
+
+.logo-video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
+.logo-video::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+.logo-video::-webkit-media-controls-play-button {
+  display: none !important;
+}
+
+.logo-video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
+/* Logo image with transparent background */
+.logo-image {
+  /* Make light gray/white backgrounds transparent using multiply blend mode */
+  mix-blend-mode: multiply;
+  /* Filter to enhance colors */
+  filter: contrast(1.05);
+}
+
+/* Wrapper for logo video to isolate blend mode */
+.logo-video-wrapper {
+  isolation: isolate;
+  /* Ensures blend mode only affects the video, not parent elements */
+}
+
+/* Alternative blend modes - uncomment if screen doesn't work well */
+/* For videos with white/light content on black background, use multiply: */
+/*
+.logo-video {
+  mix-blend-mode: multiply;
+}
+*/
+
+/* For videos with colored content, you might want to use: */
+/*
+.logo-video {
+  mix-blend-mode: darken;
+  filter: brightness(1.2) contrast(1.1);
+}
+*/
+
