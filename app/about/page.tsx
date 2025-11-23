@@ -38,8 +38,9 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold text-neon-cyan mb-6">Our Vision</h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-4">
                 We envision a future where businesses can seamlessly access professional IT services 
-                whenever and wherever they need them. Our platform connects customers with verified, 
-                qualified technicians who are committed to delivering excellence.
+                whenever and wherever they need them. We are building top-tier IT engineering teams 
+                and delivering best-in-class MSP services with immediate response times, ensuring 
+                your business never experiences unnecessary downtime.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
                 Through innovation, dedication, and a customer-first approach, we&apos;re building the 
