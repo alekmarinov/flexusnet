@@ -1,0 +1,230 @@
+================================================================================
+FLEXUSNET WEBSITE VERSION 2.1 - CHANGE LOG
+================================================================================
+Date: Current session
+Purpose: Document all changes made to enable future rollback/undo operations
+
+================================================================================
+SUMMARY OF CHANGES
+================================================================================
+
+1. Moved main logo to far left of header with spacing from border
+2. Text logo and navigation remain in centered container
+3. Maintained dual logo setup (main logo + text logo)
+4. CSS transparency effects still applied to logos
+
+================================================================================
+FILE CHANGES
+================================================================================
+
+1. components/Header.tsx
+   - MODIFIED: Header layout structure
+   - Main logo (flexus-logo.jpg) positioned at far left outside centered container
+   - Text logo (logoFLEXUStext.jpg) remains in centered container with navigation
+   - Layout uses flexbox with main logo having left padding (pl-4 sm:pl-6 lg:pl-8)
+   - Rest of header content (text logo, navigation, contact info) in flex-1 container
+   - Mobile navigation properly structured
+
+================================================================================
+CURRENT HEADER STRUCTURE
+================================================================================
+
+Header Layout:
+- Left side: Main logo (flexus-logo.jpg)
+  * Positioned at far left with spacing from border
+  * Padding: pl-4 sm:pl-6 lg:pl-8 (responsive spacing)
+  * Height: h-12 md:h-16 (responsive)
+  * Clickable, links to home page
+  * Uses logo-image class for transparency effect
+
+- Center/Right side: Text logo + Navigation + Contact Info
+  * Text logo (logoFLEXUStext.jpg) - first item in centered container
+  * Desktop Navigation - Home, Request, About Us, Contact
+  * Contact Information - Email and Phone (desktop only)
+  * Mobile menu button (visible on mobile)
+  * All contained in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 container
+
+================================================================================
+LOGO FILES
+================================================================================
+
+LOGO FILES IN USE:
+1. public/flexus-logo.jpg
+   - Source: AI pictures and videos\fcutlogo.JPG
+   - Used as main logo graphic in header
+   - Positioned at far left with spacing
+   - Has transparent background effect via CSS
+
+2. public/logoFLEXUStext.jpg
+   - Source: AI pictures and videos\logoFLEXUStext.JPG
+   - Used as text logo in centered container
+   - Positioned after main logo
+   - Has transparent background effect via CSS
+
+ADDITIONAL FILES:
+3. public/updflogo.jpg
+   - Copy of flexus-logo.jpg
+   - Created for user download/reference
+
+================================================================================
+CSS TRANSPARENCY IMPLEMENTATION
+================================================================================
+
+CSS Class: .logo-image (app/globals.css)
+- mix-blend-mode: multiply
+  * Makes white/light colors transparent on white backgrounds
+  * Keeps darker colors (blue, cyan) visible
+  
+- filter: contrast(1.3) brightness(1.05)
+  * Increases contrast to better remove grey backgrounds
+  * Slightly increases brightness to maintain color visibility
+
+Note: This is a visual effect only. The actual image files are not modified.
+
+================================================================================
+HEADER CODE STRUCTURE
+================================================================================
+
+Current Header Layout (components/Header.tsx):
+
+```tsx
+<header className="bg-white/95 backdrop-blur-md border-b-2 border-neon-cyan/20 sticky top-0 z-50 shadow-sm">
+  <div className="flex items-center h-20">
+    {/* Main Logo - Far left with spacing from border */}
+    <div className="flex-shrink-0 pl-4 sm:pl-6 lg:pl-8">
+      <Link href="/" className="flex items-center group">
+        <div className="relative flex items-center h-12 md:h-16">
+          <Image
+            src="/flexus-logo.jpg"
+            alt="FlexusNet Logo"
+            width={200}
+            height={80}
+            className="h-full w-auto object-contain transition-opacity duration-300 group-hover:opacity-90 logo-image"
+            priority
+          />
+        </div>
+      </Link>
+    </div>
+
+    {/* Rest of header content in centered container */}
+    <div className="flex-1 flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Text Logo */}
+      <div className="flex-shrink-0">
+        <Link href="/" className="flex items-center group">
+          <div className="relative flex items-center h-12 md:h-16">
+            <Image
+              src="/logoFLEXUStext.jpg"
+              alt="FlexusNet Text"
+              width={200}
+              height={80}
+              className="h-full w-auto object-contain transition-opacity duration-300 group-hover:opacity-90 logo-image"
+              priority
+            />
+          </div>
+        </Link>
+      </div>
+
+      {/* Desktop Navigation */}
+      <nav className="hidden md:flex space-x-8">
+        {/* Navigation links */}
+      </nav>
+
+      {/* Contact Info - Desktop */}
+      <div className="hidden lg:flex items-center space-x-6">
+        {/* Email and Phone */}
+      </div>
+
+      {/* Mobile menu button */}
+      <button className="md:hidden ...">
+        {/* Hamburger menu icon */}
+      </button>
+    </div>
+  </div>
+
+  {/* Mobile Navigation */}
+  {isMenuOpen && (
+    <div className="md:hidden pb-4 space-y-2 animate-fadeIn">
+      {/* Mobile menu items */}
+    </div>
+  )}
+</header>
+```
+
+================================================================================
+KEY CHANGES FROM VERSION 2.0
+================================================================================
+
+1. Header Layout Restructure:
+   - Main logo moved outside centered container
+   - Main logo positioned at far left with pl-4 sm:pl-6 lg:pl-8 padding
+   - Text logo remains in centered container with navigation
+
+2. Layout Structure:
+   - Changed from single centered container to flex layout
+   - Main logo: flex-shrink-0 with left padding
+   - Content area: flex-1 with max-w-7xl centered container
+
+3. Visual Result:
+   - Main logo appears at far left edge with spacing
+   - Text logo and navigation remain centered
+   - Better visual separation between main logo and other content
+
+================================================================================
+ROLLBACK INSTRUCTIONS
+================================================================================
+
+To revert to previous version (2.0):
+
+1. RESTORE centered container layout:
+   - Wrap both logos in same container
+   - Remove main logo from outside container
+   - Use original structure with max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
+
+2. CODE TO REVERT:
+   - Change header structure back to:
+   ```tsx
+   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div className="flex justify-between items-center h-20">
+       {/* Both logos together */}
+     </div>
+   </div>
+   ```
+
+================================================================================
+FILE PATHS REFERENCE
+================================================================================
+
+Components:
+- components/Header.tsx
+
+Styles:
+- app/globals.css
+
+Configuration:
+- next.config.js
+
+Logo Files:
+- public/flexus-logo.jpg (main logo - far left)
+- public/logoFLEXUStext.jpg (text logo - centered)
+- public/updflogo.jpg (backup copy)
+
+Source Logo Files:
+- AI pictures and videos\fcutlogo.JPG
+- AI pictures and videos\logoFLEXUStext.JPG
+
+================================================================================
+DEVELOPMENT SERVER
+================================================================================
+
+Command to start dev server: npm run dev
+URL: http://localhost:3000/
+
+Configuration:
+- next.config.js supports HMR (Hot Module Replacement)
+- Live updates work in development mode
+- Static export only applies to production builds
+
+================================================================================
+END OF LOG
+================================================================================
+

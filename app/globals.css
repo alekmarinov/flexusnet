@@ -348,10 +348,27 @@ body::before {
 
 /* Logo image with transparent background */
 .logo-image {
-  /* Make light gray/white backgrounds transparent using multiply blend mode */
+  /* Use multiply blend mode to make white/light backgrounds transparent */
+  /* Multiply makes white transparent on white backgrounds */
   mix-blend-mode: multiply;
-  /* Filter to enhance colors */
-  filter: contrast(1.05);
+  /* Filter to enhance the effect and remove white/grey backgrounds */
+  /* Increase contrast to make grey backgrounds more transparent */
+  filter: contrast(1.3) brightness(1.05);
+}
+
+/* If multiply still shows grey, try this alternative: */
+/* Uncomment the section below and comment out the above if needed */
+/*
+.logo-image {
+  mix-blend-mode: screen;
+  filter: invert(1) brightness(0) contrast(1.2);
+}
+*/
+
+/* Wrapper to isolate blend mode effect */
+.logo-image-wrapper {
+  isolation: isolate;
+  background: transparent;
 }
 
 /* Wrapper for logo video to isolate blend mode */

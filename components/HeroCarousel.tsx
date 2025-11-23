@@ -99,16 +99,20 @@ export default function HeroCarousel() {
         ))}
       </div>
 
-      {/* Nationwide Coverage Badge - Always Visible Over Carousel */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 z-30 animate-float">
-        <div className="bg-white/95 backdrop-blur-md px-8 py-4 rounded-full shadow-lg border-2 border-neon-cyan/30">
-          <div className="flex items-center space-x-3">
-            <svg className="w-8 h-8 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span className="text-xl md:text-2xl font-bold text-neon-cyan">
-              100% Nationwide Service Coverage
-            </span>
+      {/* Nationwide Coverage Badge - Right side aligned with header */}
+      <div className="absolute top-8 right-0 w-full z-30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-end -mr-8 sm:-mr-10 lg:-mr-16">
+            <div className="bg-white/95 backdrop-blur-md px-6 py-3 rounded-full shadow-lg border-2 border-neon-cyan/30">
+              <div className="flex items-center space-x-2">
+                <svg className="w-6 h-6 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-lg md:text-xl font-bold text-neon-cyan">
+                  100% Nationwide Service Coverage
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

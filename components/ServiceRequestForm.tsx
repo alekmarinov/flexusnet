@@ -191,7 +191,7 @@ export default function ServiceRequestForm() {
               </svg>
             </div>
             <h3 className="font-semibold text-neon-cyan mb-2">Network Installations</h3>
-            <p className="text-sm text-gray-300">Complete infrastructure setup</p>
+            <p className="text-sm text-gray-600">Complete infrastructure setup</p>
           </div>
           <div 
             onClick={() => setSelectedService('pos')}
@@ -203,7 +203,7 @@ export default function ServiceRequestForm() {
               </svg>
             </div>
             <h3 className="font-semibold text-neon-cyan mb-2">POS Systems</h3>
-            <p className="text-sm text-gray-300">Installation and configuration</p>
+            <p className="text-sm text-gray-600">Installation and configuration</p>
           </div>
         </div>
 

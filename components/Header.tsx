@@ -8,16 +8,33 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white/95 backdrop-blur-md border-b-2 border-neon-cyan/20 sticky top-0 z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
+    <header className="bg-white border-b-2 border-neon-cyan/20 sticky top-0 z-50 shadow-sm">
+      <div className="flex items-center h-20">
+        {/* Main Logo - Far left with spacing from border */}
+        <div className="flex-shrink-0 pl-4 sm:pl-6 lg:pl-8">
+          <Link href="/" className="flex items-center group">
+            <div className="relative flex items-center h-12 md:h-16">
+              <Image
+                src="/flexus-logo.jpg"
+                alt="FlexusNet Logo"
+                width={200}
+                height={80}
+                className="h-full w-auto object-contain transition-opacity duration-300 group-hover:opacity-90 logo-image"
+                priority
+              />
+            </div>
+          </Link>
+        </div>
+
+        {/* Rest of header content in centered container */}
+        <div className="flex-1 flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Text Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center group">
               <div className="relative flex items-center h-12 md:h-16">
                 <Image
-                  src="/flexus-logo.jpg"
-                  alt="FlexusNet Logo"
+                  src="/logoFLEXUStext.jpg"
+                  alt="FlexusNet Text"
                   width={200}
                   height={80}
                   className="h-full w-auto object-contain transition-opacity duration-300 group-hover:opacity-90 logo-image"
@@ -78,8 +95,9 @@ export default function Header() {
             </svg>
           </button>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
+      {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden pb-4 space-y-2 animate-fadeIn">
             <Link href="/" className="block px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-neon-cyan rounded transition-all duration-300">
@@ -110,7 +128,6 @@ export default function Header() {
             </div>
           </div>
         )}
-      </div>
     </header>
   )
 }

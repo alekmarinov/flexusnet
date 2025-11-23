@@ -1,0 +1,229 @@
+================================================================================
+FLEXUSNET WEBSITE VERSION 2.0 - CHANGE LOG
+================================================================================
+Date: Session changes log
+Purpose: Document all changes made to enable future rollback/undo operations
+
+================================================================================
+SUMMARY OF CHANGES
+================================================================================
+
+1. Removed carousel navigation arrows
+2. Added animated video logo (later removed)
+3. Added static logo images with transparent background effect
+4. Fixed Next.js configuration for live updates (HMR)
+5. Added dual logo setup (main logo + text logo)
+6. Applied CSS transparency effects to logos
+
+================================================================================
+FILE CHANGES
+================================================================================
+
+1. components/Header.tsx
+   - REMOVED: Carousel navigation arrows (previous session)
+   - ADDED: Image component import from 'next/image'
+   - ADDED: Dual logo setup with flexbox layout
+   - LOGO 1: /flexus-logo.jpg (main logo graphic)
+   - LOGO 2: /logoFLEXUStext.jpg (text logo)
+   - Both logos use className "logo-image" for transparency effect
+   - Both logos are wrapped in Link component pointing to home page
+   - Responsive sizing: h-12 md:h-16
+   - Gap between logos: gap-3 md:gap-4
+
+2. app/globals.css
+   - ADDED: .logo-image CSS class for transparent background effect
+   - mix-blend-mode: multiply (makes white/light backgrounds transparent)
+   - filter: contrast(1.3) brightness(1.05) (enhances transparency effect)
+   - Alternative blend modes commented out for future use
+
+3. next.config.js
+   - MODIFIED: Changed output: 'export' to conditional
+   - Now only applies static export in production builds
+   - Development mode (npm run dev) now has full HMR support
+   - This enables live updates in browser during development
+
+================================================================================
+LOGO FILES
+================================================================================
+
+Source Location: "AI pictures and videos" folder
+Public Folder Location: public/
+
+LOGO FILES IN USE:
+1. public/flexus-logo.jpg
+   - Source: AI pictures and videos\fcutlogo.JPG
+   - Used as main logo graphic in header
+   - Has transparent background effect via CSS
+
+2. public/logoFLEXUStext.jpg
+   - Source: AI pictures and videos\logoFLEXUStext.JPG
+   - Used as text logo next to main logo
+   - Has transparent background effect via CSS
+
+ADDITIONAL FILES CREATED:
+3. public/updflogo.jpg
+   - Copy of flexus-logo.jpg
+   - Created for user download/reference
+
+================================================================================
+CSS TRANSPARENCY IMPLEMENTATION
+================================================================================
+
+The logo transparency is achieved through CSS blend modes, not by modifying
+the actual image files. The images still contain their original backgrounds.
+
+CSS Class: .logo-image
+- mix-blend-mode: multiply
+  * Makes white/light colors transparent on white backgrounds
+  * Keeps darker colors (blue, cyan) visible
+  
+- filter: contrast(1.3) brightness(1.05)
+  * Increases contrast to better remove grey backgrounds
+  * Slightly increases brightness to maintain color visibility
+
+Note: This is a visual effect only. The actual image files are not modified.
+To create truly transparent images, use image editing software and save as PNG.
+
+================================================================================
+HEADER STRUCTURE (Current State)
+================================================================================
+
+Header Layout:
+- Left side: Logo section (dual logos side by side)
+  * Main logo (flexus-logo.jpg)
+  * Text logo (logoFLEXUStext.jpg)
+  * Both clickable, link to home page
+  * Responsive sizing and spacing
+
+- Center: Desktop Navigation (hidden on mobile)
+  * Home, Request, About Us, Contact links
+
+- Right side: Contact Information (desktop only)
+  * Email: service@flexusnet.com
+  * Phone: (470) 300-3369
+
+- Mobile: Hamburger menu button (visible on mobile)
+
+================================================================================
+DEVELOPMENT SERVER CONFIGURATION
+================================================================================
+
+Command to start dev server: npm run dev
+URL: http://localhost:3000/
+
+Configuration Changes:
+- next.config.js now supports HMR (Hot Module Replacement)
+- Live updates work in development mode
+- Static export only applies to production builds
+
+================================================================================
+ROLLBACK INSTRUCTIONS
+================================================================================
+
+To revert to previous version:
+
+1. REMOVE dual logo setup:
+   - In components/Header.tsx, replace the dual logo div with single logo
+   - Remove logoFLEXUStext.jpg image component
+   - Keep only flexus-logo.jpg
+
+2. REMOVE logo transparency CSS:
+   - In app/globals.css, remove or comment out .logo-image class
+   - Or change mix-blend-mode to 'normal'
+
+3. REVERT Next.js config (if needed):
+   - Change next.config.js back to always use output: 'export'
+   - This will disable HMR but enable static export
+
+4. REMOVE logo files (if needed):
+   - Delete public/flexus-logo.jpg
+   - Delete public/logoFLEXUStext.jpg
+   - Delete public/updflogo.jpg
+
+================================================================================
+FILE PATHS REFERENCE
+================================================================================
+
+Components:
+- components/Header.tsx
+
+Styles:
+- app/globals.css
+
+Configuration:
+- next.config.js
+
+Logo Files:
+- public/flexus-logo.jpg
+- public/logoFLEXUStext.jpg
+- public/updflogo.jpg
+
+Source Logo Files:
+- AI pictures and videos\fcutlogo.JPG
+- AI pictures and videos\logoFLEXUStext.JPG
+
+================================================================================
+KEY CODE SECTIONS
+================================================================================
+
+Header Logo Section (components/Header.tsx lines 14-40):
+```tsx
+{/* Logo */}
+<div className="flex-shrink-0">
+  <Link href="/" className="flex items-center group">
+    <div className="flex items-center gap-3 md:gap-4">
+      <div className="relative flex items-center h-12 md:h-16">
+        <Image
+          src="/flexus-logo.jpg"
+          alt="FlexusNet Logo"
+          width={200}
+          height={80}
+          className="h-full w-auto object-contain transition-opacity duration-300 group-hover:opacity-90 logo-image"
+          priority
+        />
+      </div>
+      <div className="relative flex items-center h-12 md:h-16">
+        <Image
+          src="/logoFLEXUStext.jpg"
+          alt="FlexusNet Text"
+          width={200}
+          height={80}
+          className="h-full w-auto object-contain transition-opacity duration-300 group-hover:opacity-90 logo-image"
+          priority
+        />
+      </div>
+    </div>
+  </Link>
+</div>
+```
+
+CSS Transparency (app/globals.css lines 349-357):
+```css
+/* Logo image with transparent background */
+.logo-image {
+  /* Use multiply blend mode to make white/light backgrounds transparent */
+  /* Multiply makes white transparent on white backgrounds */
+  mix-blend-mode: multiply;
+  /* Filter to enhance the effect and remove white/grey backgrounds */
+  /* Increase contrast to make grey backgrounds more transparent */
+  filter: contrast(1.3) brightness(1.05);
+}
+```
+
+Next.js Config (next.config.js):
+```javascript
+const nextConfig = {
+  // Only use static export for production builds, not for development
+  ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
+  basePath: process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true' ? '/flexusnet' : '',
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
+}
+```
+
+================================================================================
+END OF LOG
+================================================================================
+
