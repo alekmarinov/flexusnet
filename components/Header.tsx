@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { getAssetPath } from '@/lib/paths'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -15,7 +16,7 @@ export default function Header() {
           <Link href="/" className="flex items-center group">
             <div className="relative flex items-center h-12 md:h-16">
               <Image
-                src="/flexus-logo.jpg"
+                src={getAssetPath('/flexus-logo.jpg')}
                 alt="FlexusNet Logo"
                 width={200}
                 height={80}
@@ -33,7 +34,7 @@ export default function Header() {
             <Link href="/" className="flex items-center group">
               <div className="relative flex items-center h-12 md:h-16">
                 <Image
-                  src="/logoFLEXUStext.jpg"
+                  src={getAssetPath('/logoFLEXUStext.jpg')}
                   alt="FlexusNet Text"
                   width={200}
                   height={80}
