@@ -200,7 +200,7 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold text-neon-cyan mb-2">Excellence</h3>
                 <p className="text-gray-700">
                   We&apos;re committed to delivering exceptional service quality and continuously 
-                  improving our platform and processes.
+                  improving our services.
                 </p>
               </div>
             </div>
@@ -211,7 +211,7 @@ export default function AboutPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
-              <div className="bg-cyber-darkblue/30 backdrop-blur-sm p-6 rounded-lg border border-neon-cyan/20 group-hover:border-neon-cyan/50 transition-all duration-300 flex-1">
+              <div className="bg-white backdrop-blur-sm p-6 rounded-lg border border-neon-cyan/20 group-hover:border-neon-cyan/40 transition-all duration-300 flex-1">
                 <h3 className="text-xl font-semibold text-neon-cyan mb-2">Innovation</h3>
                 <p className="text-gray-700">
                   We embrace new technologies and innovative solutions to better serve our 
