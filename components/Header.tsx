@@ -13,36 +13,40 @@ export default function Header() {
       <div className="flex items-center h-20">
         {/* Main Logo - Far left with spacing from border */}
         <div className="flex-shrink-0 pl-4 sm:pl-6 lg:pl-8">
-          <Link href="/" className="flex items-center group">
-            <div className="relative flex items-center h-12 md:h-16">
+          <div className="flex items-center">
+            <div className="relative flex items-center h-12 md:h-16 logo-no-download">
               <Image
                 src={getAssetPath('/flexus-logo.jpg')}
                 alt="FlexusNet Logo"
                 width={200}
                 height={80}
-                className="h-full w-auto object-contain transition-opacity duration-300 group-hover:opacity-90 logo-image"
+                className="h-full w-auto object-contain logo-image"
                 priority
+                draggable={false}
+                onContextMenu={(e) => e.preventDefault()}
               />
             </div>
-          </Link>
+          </div>
         </div>
 
         {/* Rest of header content in centered container */}
         <div className="flex-1 flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Text Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center group">
-              <div className="relative flex items-center h-12 md:h-16">
+            <div className="flex items-center">
+              <div className="relative flex items-center h-12 md:h-16 logo-no-download">
                 <Image
                   src={getAssetPath('/logoFLEXUStext.jpg')}
                   alt="FlexusNet Text"
                   width={200}
                   height={80}
-                  className="h-full w-auto object-contain transition-opacity duration-300 group-hover:opacity-90 logo-image"
+                  className="h-full w-auto object-contain logo-image"
                   priority
+                  draggable={false}
+                  onContextMenu={(e) => e.preventDefault()}
                 />
               </div>
-            </Link>
+            </div>
           </div>
 
           {/* Desktop Navigation */}

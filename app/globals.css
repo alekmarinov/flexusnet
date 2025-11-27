@@ -354,6 +354,32 @@ body::before {
   /* Filter to enhance the effect and remove white/grey backgrounds */
   /* Increase contrast to make grey backgrounds more transparent */
   filter: contrast(1.3) brightness(1.05);
+  /* Prevent image dragging */
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+}
+
+/* Logo container - prevent right-click and downloading */
+.logo-no-download {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: auto;
+  cursor: default;
+}
+
+.logo-no-download img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 /* If multiply still shows grey, try this alternative: */

@@ -1,144 +1,280 @@
 ================================================================================
-FLEXUSNET WEBSITE VERSION 2.0 - CHANGE LOG
+FLEXUSNET WEBSITE VERSION 2.2 - CHANGE LOG (UPDATED)
 ================================================================================
-Date: Session changes log
+Date: Current session
 Purpose: Document all changes made to enable future rollback/undo operations
 
 ================================================================================
 SUMMARY OF CHANGES
 ================================================================================
 
-1. Removed carousel navigation arrows
-2. Added animated video logo (later removed)
-3. Added static logo images with transparent background effect
-4. Fixed Next.js configuration for live updates (HMR)
-5. Added dual logo setup (main logo + text logo)
-6. Applied CSS transparency effects to logos
+1. Moved "100% Nationwide Service Coverage" badge to right side of carousel
+2. Made badge static (removed animation)
+3. Made badge smaller (reduced text and icon sizes)
+4. Aligned badge with header email/phone position
+5. Positioned badge with negative margins for precise right alignment
+6. Fixed text visibility in service cards (Network Installations and POS Systems)
+7. Removed header transparency (made header fully opaque)
 
 ================================================================================
 FILE CHANGES
 ================================================================================
 
-1. components/Header.tsx
-   - REMOVED: Carousel navigation arrows (previous session)
-   - ADDED: Image component import from 'next/image'
-   - ADDED: Dual logo setup with flexbox layout
-   - LOGO 1: /flexus-logo.jpg (main logo graphic)
-   - LOGO 2: /logoFLEXUStext.jpg (text logo)
-   - Both logos use className "logo-image" for transparency effect
-   - Both logos are wrapped in Link component pointing to home page
-   - Responsive sizing: h-12 md:h-16
-   - Gap between logos: gap-3 md:gap-4
+1. components/HeroCarousel.tsx
+   - MODIFIED: Nationwide Coverage Badge positioning
+   - Changed from centered (top center) to right-aligned
+   - Removed animate-float class (made static)
+   - Reduced sizes: text from text-xl md:text-2xl to text-lg md:text-xl
+   - Reduced icon size: from w-8 h-8 to w-6 h-6
+   - Reduced padding: from px-8 py-4 to px-6 py-3
+   - Reduced spacing: from space-x-3 to space-x-2
+   - Positioned using max-w-7xl container to align with header
+   - Used negative margins (-mr-8 sm:-mr-10 lg:-mr-16) for right alignment
 
-2. app/globals.css
-   - ADDED: .logo-image CSS class for transparent background effect
-   - mix-blend-mode: multiply (makes white/light backgrounds transparent)
-   - filter: contrast(1.3) brightness(1.05) (enhances transparency effect)
-   - Alternative blend modes commented out for future use
+2. components/ServiceRequestForm.tsx
+   - MODIFIED: Service card text visibility
+   - Changed "Network Installations" subtitle from text-gray-300 to text-gray-600
+   - Changed "POS Systems" subtitle from text-gray-300 to text-gray-600
+   - All three service cards now use text-gray-600 for consistent visibility
+   - This ensures all service card descriptions are equally readable
 
-3. next.config.js
-   - MODIFIED: Changed output: 'export' to conditional
-   - Now only applies static export in production builds
-   - Development mode (npm run dev) now has full HMR support
-   - This enables live updates in browser during development
-
-================================================================================
-LOGO FILES
-================================================================================
-
-Source Location: "AI pictures and videos" folder
-Public Folder Location: public/
-
-LOGO FILES IN USE:
-1. public/flexus-logo.jpg
-   - Source: AI pictures and videos\fcutlogo.JPG
-   - Used as main logo graphic in header
-   - Has transparent background effect via CSS
-
-2. public/logoFLEXUStext.jpg
-   - Source: AI pictures and videos\logoFLEXUStext.JPG
-   - Used as text logo next to main logo
-   - Has transparent background effect via CSS
-
-ADDITIONAL FILES CREATED:
-3. public/updflogo.jpg
-   - Copy of flexus-logo.jpg
-   - Created for user download/reference
+3. components/Header.tsx
+   - MODIFIED: Header background transparency
+   - Changed from bg-white/95 backdrop-blur-md to bg-white
+   - Removed transparency (was 95% opaque, now 100% opaque)
+   - Header is now fully opaque when scrolling, preventing content bleed-through
+   - This fixes logo background visibility issues when scrolling
 
 ================================================================================
-CSS TRANSPARENCY IMPLEMENTATION
+BADGE POSITIONING DETAILS
 ================================================================================
 
-The logo transparency is achieved through CSS blend modes, not by modifying
-the actual image files. The images still contain their original backgrounds.
+Current Badge Position:
+- Location: Right side of carousel, top area
+- Alignment: Aligned with header email/phone using same container structure
+- Container: max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
+- Positioning: absolute top-8 right-0 with negative margins
+- Negative margins: -mr-8 sm:-mr-10 lg:-mr-16 (responsive)
 
-CSS Class: .logo-image
-- mix-blend-mode: multiply
-  * Makes white/light colors transparent on white backgrounds
-  * Keeps darker colors (blue, cyan) visible
-  
-- filter: contrast(1.3) brightness(1.05)
-  * Increases contrast to better remove grey backgrounds
-  * Slightly increases brightness to maintain color visibility
-
-Note: This is a visual effect only. The actual image files are not modified.
-To create truly transparent images, use image editing software and save as PNG.
-
-================================================================================
-HEADER STRUCTURE (Current State)
-================================================================================
-
-Header Layout:
-- Left side: Logo section (dual logos side by side)
-  * Main logo (flexus-logo.jpg)
-  * Text logo (logoFLEXUStext.jpg)
-  * Both clickable, link to home page
-  * Responsive sizing and spacing
-
-- Center: Desktop Navigation (hidden on mobile)
-  * Home, Request, About Us, Contact links
-
-- Right side: Contact Information (desktop only)
-  * Email: service@flexusnet.com
-  * Phone: (470) 300-3369
-
-- Mobile: Hamburger menu button (visible on mobile)
+Badge Styling:
+- Background: bg-white/95 backdrop-blur-md
+- Padding: px-6 py-3
+- Border: rounded-full shadow-lg border-2 border-neon-cyan/30
+- Icon: w-6 h-6 text-neon-cyan
+- Text: text-lg md:text-xl font-bold text-neon-cyan
+- Spacing: space-x-2 between icon and text
 
 ================================================================================
-DEVELOPMENT SERVER CONFIGURATION
+SERVICE CARDS TEXT VISIBILITY FIX
 ================================================================================
 
-Command to start dev server: npm run dev
-URL: http://localhost:3000/
+Problem:
+- "Network Installations" and "POS Systems" cards had text-gray-300 for subtitles
+- "Laptop/Desktop/Office equipment" card had text-gray-600 for subtitle
+- This caused inconsistent visibility (gray-300 is too light)
 
-Configuration Changes:
-- next.config.js now supports HMR (Hot Module Replacement)
-- Live updates work in development mode
-- Static export only applies to production builds
+Solution:
+- Changed all service card subtitles to text-gray-600
+- Now all three cards have consistent, readable text
+
+Service Cards:
+1. Laptop/Desktop/Office equipment
+   - Subtitle: "Professional installation and setup" (text-gray-600)
+   
+2. Network Installations
+   - Subtitle: "Complete infrastructure setup" (text-gray-600 - FIXED)
+   
+3. POS Systems
+   - Subtitle: "Installation and configuration" (text-gray-600 - FIXED)
+
+================================================================================
+HEADER TRANSPARENCY REMOVAL
+================================================================================
+
+Problem:
+- Header had bg-white/95 backdrop-blur-md (95% opacity)
+- When scrolling, content behind header was visible
+- This caused logo backgrounds to appear different due to transparency
+
+Solution:
+- Changed header background to bg-white (100% opaque)
+- Removed backdrop-blur-md effect
+- Header is now fully opaque, preventing any content bleed-through
+
+Header Styling:
+- Background: bg-white (fully opaque)
+- Border: border-b-2 border-neon-cyan/20
+- Position: sticky top-0 z-50
+- Shadow: shadow-sm
+
+================================================================================
+CURRENT CAROUSEL STRUCTURE
+================================================================================
+
+HeroCarousel Component:
+- Slides: 3 slides (Laptop/Desktop, Network Installations, POS Systems)
+- Auto-rotate: Every 5 seconds
+- Navigation: Dot indicators at bottom (no arrows)
+- Badge: Right side, top area, static, smaller size
+- Badge alignment: Matches header email/phone container structure
+
+================================================================================
+BADGE CODE SECTION
+================================================================================
+
+Current Badge Code (components/HeroCarousel.tsx lines 102-120):
+
+```tsx
+{/* Nationwide Coverage Badge - Right side aligned with header */}
+<div className="absolute top-8 right-0 w-full z-30">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex justify-end -mr-8 sm:-mr-10 lg:-mr-16">
+      <div className="bg-white/95 backdrop-blur-md px-6 py-3 rounded-full shadow-lg border-2 border-neon-cyan/30">
+        <div className="flex items-center space-x-2">
+          <svg className="w-6 h-6 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span className="text-lg md:text-xl font-bold text-neon-cyan">
+            100% Nationwide Service Coverage
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+================================================================================
+SERVICE CARDS CODE SECTION
+================================================================================
+
+Current Service Cards Code (components/ServiceRequestForm.tsx):
+
+```tsx
+{/* Laptop/Desktop/Office equipment */}
+<div
+  onClick={() => setSelectedService('laptop-desktop')}
+  className="bg-white backdrop-blur-sm p-6 rounded-lg border border-neon-cyan/30 text-center cursor-pointer hover:border-neon-cyan hover:shadow-md transition-all duration-300 hover:scale-105"
+>
+  {/* ... icon ... */}
+  <h3 className="font-semibold text-neon-cyan mb-2">Laptop/Desktop/Office equipment</h3>
+  <p className="text-sm text-gray-600">Professional installation and setup</p>
+</div>
+
+{/* Network Installations */}
+<div
+  onClick={() => setSelectedService('network')}
+  className="bg-white backdrop-blur-sm p-6 rounded-lg border border-neon-cyan/30 text-center cursor-pointer hover:border-neon-cyan hover:shadow-md transition-all duration-300 hover:scale-105"
+>
+  {/* ... icon ... */}
+  <h3 className="font-semibold text-neon-cyan mb-2">Network Installations</h3>
+  <p className="text-sm text-gray-600">Complete infrastructure setup</p>
+</div>
+
+{/* POS Systems */}
+<div
+  onClick={() => setSelectedService('pos')}
+  className="bg-white backdrop-blur-sm p-6 rounded-lg border border-neon-cyan/30 text-center cursor-pointer hover:border-neon-cyan hover:shadow-md transition-all duration-300 hover:scale-105"
+>
+  {/* ... icon ... */}
+  <h3 className="font-semibold text-neon-cyan mb-2">POS Systems</h3>
+  <p className="text-sm text-gray-600">Installation and configuration</p>
+</div>
+```
+
+Note: All three cards now use text-gray-600 for subtitle text.
+
+================================================================================
+HEADER CODE SECTION
+================================================================================
+
+Current Header Code (components/Header.tsx line 11):
+
+```tsx
+<header className="bg-white border-b-2 border-neon-cyan/20 sticky top-0 z-50 shadow-sm">
+```
+
+Previous version had:
+```tsx
+<header className="bg-white/95 backdrop-blur-md border-b-2 border-neon-cyan/20 sticky top-0 z-50 shadow-sm">
+```
+
+================================================================================
+KEY CHANGES FROM VERSION 2.1
+================================================================================
+
+1. Badge Position:
+   - FROM: Centered at top of carousel (left-1/2 -translate-x-1/2)
+   - TO: Right side aligned with header (right-0 with negative margins)
+
+2. Badge Animation:
+   - FROM: animate-float (floating animation)
+   - TO: Static (no animation)
+
+3. Badge Size:
+   - FROM: Larger (text-xl md:text-2xl, w-8 h-8 icon, px-8 py-4 padding)
+   - TO: Smaller (text-lg md:text-xl, w-6 h-6 icon, px-6 py-3 padding)
+
+4. Badge Alignment:
+   - FROM: Centered independently
+   - TO: Aligned with header using max-w-7xl container structure
+
+5. Service Cards Text Visibility:
+   - FROM: Inconsistent (text-gray-300 for Network/POS, text-gray-600 for Laptop)
+   - TO: Consistent (text-gray-600 for all three cards)
+
+6. Header Transparency:
+   - FROM: bg-white/95 backdrop-blur-md (95% opaque, transparent)
+   - TO: bg-white (100% opaque, fully solid)
 
 ================================================================================
 ROLLBACK INSTRUCTIONS
 ================================================================================
 
-To revert to previous version:
+To revert to previous version (2.1):
 
-1. REMOVE dual logo setup:
-   - In components/Header.tsx, replace the dual logo div with single logo
-   - Remove logoFLEXUStext.jpg image component
-   - Keep only flexus-logo.jpg
+1. RESTORE centered badge:
+   - Change positioning from right-0 to left-1/2 -translate-x-1/2
+   - Remove negative margins
+   - Remove max-w-7xl container wrapper
 
-2. REMOVE logo transparency CSS:
-   - In app/globals.css, remove or comment out .logo-image class
-   - Or change mix-blend-mode to 'normal'
+2. RESTORE animation (if needed):
+   - Add animate-float class back to badge container
 
-3. REVERT Next.js config (if needed):
-   - Change next.config.js back to always use output: 'export'
-   - This will disable HMR but enable static export
+3. RESTORE larger size (if needed):
+   - Change text to text-xl md:text-2xl
+   - Change icon to w-8 h-8
+   - Change padding to px-8 py-4
+   - Change spacing to space-x-3
 
-4. REMOVE logo files (if needed):
-   - Delete public/flexus-logo.jpg
-   - Delete public/logoFLEXUStext.jpg
-   - Delete public/updflogo.jpg
+4. RESTORE service card text colors (if needed):
+   - Change "Network Installations" subtitle to text-gray-300
+   - Change "POS Systems" subtitle to text-gray-300
+
+5. RESTORE header transparency (if needed):
+   - Change header className from bg-white to bg-white/95 backdrop-blur-md
+
+6. CODE TO REVERT BADGE:
+   ```tsx
+   {/* Nationwide Coverage Badge - Always Visible Over Carousel */}
+   <div className="absolute top-8 left-1/2 -translate-x-1/2 z-30 animate-float">
+     <div className="bg-white/95 backdrop-blur-md px-8 py-4 rounded-full shadow-lg border-2 border-neon-cyan/30">
+       <div className="flex items-center space-x-3">
+         <svg className="w-8 h-8 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg>
+         <span className="text-xl md:text-2xl font-bold text-neon-cyan">
+           100% Nationwide Service Coverage
+         </span>
+       </div>
+     </div>
+   </div>
+   ```
+
+7. CODE TO REVERT HEADER:
+   ```tsx
+   <header className="bg-white/95 backdrop-blur-md border-b-2 border-neon-cyan/20 sticky top-0 z-50 shadow-sm">
+   ```
 
 ================================================================================
 FILE PATHS REFERENCE
@@ -146,6 +282,8 @@ FILE PATHS REFERENCE
 
 Components:
 - components/Header.tsx
+- components/HeroCarousel.tsx
+- components/ServiceRequestForm.tsx
 
 Styles:
 - app/globals.css
@@ -154,76 +292,85 @@ Configuration:
 - next.config.js
 
 Logo Files:
-- public/flexus-logo.jpg
-- public/logoFLEXUStext.jpg
-- public/updflogo.jpg
-
-Source Logo Files:
-- AI pictures and videos\fcutlogo.JPG
-- AI pictures and videos\logoFLEXUStext.JPG
+- public/flexus-logo.jpg (main logo - far left)
+- public/logoFLEXUStext.jpg (text logo - centered)
+- public/updflogo.jpg (backup copy)
 
 ================================================================================
-KEY CODE SECTIONS
+DEVELOPMENT SERVER
 ================================================================================
 
-Header Logo Section (components/Header.tsx lines 14-40):
-```tsx
-{/* Logo */}
-<div className="flex-shrink-0">
-  <Link href="/" className="flex items-center group">
-    <div className="flex items-center gap-3 md:gap-4">
-      <div className="relative flex items-center h-12 md:h-16">
-        <Image
-          src="/flexus-logo.jpg"
-          alt="FlexusNet Logo"
-          width={200}
-          height={80}
-          className="h-full w-auto object-contain transition-opacity duration-300 group-hover:opacity-90 logo-image"
-          priority
-        />
-      </div>
-      <div className="relative flex items-center h-12 md:h-16">
-        <Image
-          src="/logoFLEXUStext.jpg"
-          alt="FlexusNet Text"
-          width={200}
-          height={80}
-          className="h-full w-auto object-contain transition-opacity duration-300 group-hover:opacity-90 logo-image"
-          priority
-        />
-      </div>
-    </div>
-  </Link>
-</div>
-```
+Command to start dev server: npm run dev
+URL: http://localhost:3000/
 
-CSS Transparency (app/globals.css lines 349-357):
-```css
-/* Logo image with transparent background */
-.logo-image {
-  /* Use multiply blend mode to make white/light backgrounds transparent */
-  /* Multiply makes white transparent on white backgrounds */
-  mix-blend-mode: multiply;
-  /* Filter to enhance the effect and remove white/grey backgrounds */
-  /* Increase contrast to make grey backgrounds more transparent */
-  filter: contrast(1.3) brightness(1.05);
-}
-```
+Configuration:
+- next.config.js supports HMR (Hot Module Replacement)
+- Live updates work in development mode
+- Static export only applies to production builds
 
-Next.js Config (next.config.js):
-```javascript
-const nextConfig = {
-  // Only use static export for production builds, not for development
-  ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
-  basePath: process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true' ? '/flexusnet' : '',
-  trailingSlash: true,
-  images: {
-    unoptimized: true,
-  },
-}
-```
+================================================================================
+BADGE POSITIONING NOTES
+================================================================================
+
+The badge is positioned using:
+- Absolute positioning: absolute top-8 right-0
+- Container alignment: max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
+- Right alignment: flex justify-end
+- Fine-tuning: Negative margins -mr-8 sm:-mr-10 lg:-mr-16
+
+This ensures the badge aligns with the header's email/phone section while
+being positioned on the right side of the carousel.
+
+================================================================================
+HEADER TRANSPARENCY NOTES
+================================================================================
+
+The header was made fully opaque to:
+- Prevent content bleed-through when scrolling
+- Ensure consistent logo background appearance
+- Provide a solid, professional look
+- Fix visibility issues with logo backgrounds
+
+The change from bg-white/95 backdrop-blur-md to bg-white removes all
+transparency effects, making the header completely solid.
 
 ================================================================================
 END OF LOG
 ================================================================================
+
+================================================================================
+ABOUT PAGE - VISION SECTION CHANGES
+================================================================================
+
+Updated 'Our Vision' text in app/about/page.tsx:
+
+REMOVED:
+'Our platform connects customers with verified, qualified technicians who are committed to delivering excellence.'
+
+ADDED:
+'We are building top-tier IT engineering teams and delivering best-in-class MSP services with immediate response times, ensuring your business never experiences unnecessary downtime.'
+
+================================================================================
+ABOUT PAGE - CORE VALUES CHANGES
+================================================================================
+
+1. Replaced simple dots with meaningful icons:
+   - Customer First: Users/people icon
+   - Integrity: Shield with checkmark icon
+   - Excellence: Badge/medal with checkmark icon
+   - Innovation: Lightbulb icon
+
+2. Icon container styling:
+   - Changed from: w-3 h-3 bg-neon-cyan rounded-full mt-2
+   - Changed to: w-12 h-12 bg-neon-cyan/10 rounded-lg with SVG icons
+   - Alignment: Changed from items-start to items-center
+
+3. Background consistency:
+   - Fixed Innovation card: Changed from bg-cyber-darkblue/30 to bg-white
+
+4. Text updates:
+   - Excellence: Changed 'platform' to 'services'
+   - Excellence: Removed 'and processes'
+
+File: app/about/page.tsx
 

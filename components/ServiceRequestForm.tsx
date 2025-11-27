@@ -126,14 +126,20 @@ export default function ServiceRequestForm() {
     setSubmitStatus('idle')
 
     try {
-      // In a real implementation, this would send to your API endpoint
-      // For now, we'll simulate an API call
-      const response = await fetch('/api/contact', {
+      // Use PHP handler for SiteGround hosting, API route for development
+      const apiEndpoint = typeof window !== 'undefined' && window.location.hostname === 'localhost'
+        ? '/api/contact'
+        : '/contact-handler.php'
+      
+      const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          selectedService: selectedService,
+        }),
       })
 
       if (response.ok) {
