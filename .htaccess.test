@@ -1,0 +1,14 @@
+# TEMPORARY TEST VERSION - Use this to diagnose the issue
+# If this works, then gradually add rules back
+
+# Disable all rewrites temporarily to test if files load
+# If files load with this, the issue is with rewrite rules
+# If files still don't load, the _next folder wasn't uploaded correctly
+
+# Set proper MIME types
+<IfModule mod_mime.c>
+  AddType text/css .css
+  AddType application/javascript .js
+  AddType application/json .json
+</IfModule>
+
